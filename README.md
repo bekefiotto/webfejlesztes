@@ -1,2 +1,18 @@
 # webfejlesztes
 Webfejlesztes Beadandó
+Készítő neve: Békefi Ottó
+Neptun kód: DMZ1G1
+Weboldal url: https://bekefiotto.github.io/webfejlesztes/
+Téma: A weboldal az FC Barcelona focicsapatával foglalkozik. Szó esik a csapat történelméről, jelenlegi játékosairól és a legnagyobb sikereiről is.
+JS kód helye: gyökérkönyvtár/js
+JS kód működése:
+-foprogram.js: Ez a script felel azért, hogy mobilnézetben a menü nézetet meg lehessen változtatni (tehát az elrejtett változatot fel lehessen fedni.)
+A kód megkeresi és eltárolja a két kulcsfontosságú elemet a HTML-ben: a gombot (.menu-kapcsolo) és a navigációs elemeket tartalmazó listát (.fo-navigacio ul).
+Az eseményfigyelő figyeli, hogy a felhasználó mikor kattint a megfelelő gombra, classList.toggle('nyitott') ez a sor pedig megváltoztatja a display értéket (vagy none vagy flex). Ezután pedig megváltozik a menü megjelenése és a gomb neve is (Vagy menü lesz, ekkor nyitódik meg a menü, vagy bezár, ekkor záródik be a menü és lesz alaphelyzetben)
+
+interaktiv_funckio.js: Ez a script a Pontszám Kalkulátor működését valósítja meg, két fő feladata van: a pontszám kiszámítása a győzelmek, döntetlenek és vereségek alapján, valamint a bemeneti adatok ellenőrzése a 38 meccses maximum miatt. A pontszamKiszamitasa() függvény végzi a kalkulációt, a bemeneti mezőkből kinyert számok felhasználásával, és ha a meccsszám meghaladja a 38-at, riasztást küld és pirosra állítja az összegző szöveg színét. Az osszesMeccsFrissitese() funkció biztosítja a valós idejű visszajelzést a felhasználó gépelése közben, azonnal frissítve az összes meccsszámot a kijelzőn. Végül, a kód szamolGomb kattintási eseményére futtatja le a számítást, ezzel kiszámolja a megszerzett pontokat.
+
+urlap_validacio.js: Ez a script az űrlap validációt valósítja meg. A program két fő segédfüggvénnyel, a hibaMegjelenites() és hibaEltuntetes()-sel kezeli a vizuális visszajelzést, melyek a hibaüzenet szövegét és az input mező piros keretét (hibas-input osztály) váltják. Az Inputellenorzes() függvény sorban ellenőrzi a beviteli mezőket (név, e-mail, jelszó hossza, téma kiválasztása, rádiógomb választása, azaz a szurkolótípus kiválasztása), biztosítva, hogy a bemeneti adatok megfeleljenek az elvárásoknak. Ha a validáció során hibát talál, megakadályozza az űrlap elküldését (e.preventDefault()) és figyelmeztető üzenetet jelenít meg a felhasználónak a weboldalon.
+
+Egyedi fonttípus: https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap
+Felhasznált segítség: Gemini AI (html + css), űrlap validáláshoz ezt a videót is használtam segítségképpen: https://www.youtube.com/watch?v=CYlNJpltjMM&t=414s
