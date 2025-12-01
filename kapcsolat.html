@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vedd fel a kapcsolatot velünk, küldj üzenetet vagy csatlakozz a hírlevelünkhöz.">
+    <meta name="author" content="Békefi Ottó">
+
+    <link rel="icon" type="image/x-icon" href="kepek/barcelona.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/stilus.css">
+    <title>Kapcsolat – FC Barcelona</title>
+</head>
+<body>
+    
+    <header class="fo-fejlec">
+        <div class="embléma">
+            <h1>FC Barcelona</h1>
+            <p>"Més Que Un Club"</p>
+        </div>
+        <nav class="fo-navigacio">
+            <ul>
+                <li><a href="index.html">Kezdőlap</a></li>
+                <li><a href="tortenet.html">Történelem</a></li>
+                <li><a href="keret.html">Legjobb játékosaink</a></li>
+                <li><a href="kapcsolat.html" class="aktiv">Kapcsolat</a></li>
+            </ul>
+        </nav>
+        <button class="menu-kapcsolo">Menü</button> 
+    </header>
+
+    <main class="tartalom-burkolo">
+        <h1 class="oldal-cim">Lépj Velünk Kapcsolatba</h1>
+        <section id="kapcsolati-urlap-szekcio" class="urlap-szekcio">
+            <p class="kapcsolat-bevezeto_szoveg">Küldd el kérdésedet, véleményedet vagy javaslatodat az alábbi űrlapon keresztül.</p>
+            
+            <form id="visszajelzes-urlap" class="kapcsolati-urlap" action="/submit" method="POST" novalidate>
+                
+                <div class="urlap-csoport">
+                    <label for="nev">Teljes Név:</label>
+                    <input type="text" id="nev" name="nev" required>
+                    <span class="hiba-uzenet" id="nev-hiba"></span> 
+                </div>
+
+                <div class="urlap-csoport">
+                    <label for="email">E-mail Cím:</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="hiba-uzenet" id="email-hiba"></span> 
+                </div>
+                
+                <div class="urlap-csoport">
+                    <label for="jelszo">Jelszó (Titkos üzenethez, min 8 karakter):</label>
+                    <input type="password" id="jelszo" name="jelszo" minlength="8" required>
+                    <span class="hiba-uzenet" id="jelszo-hiba"></span> 
+                </div>
+
+                <div class="urlap-csoport">
+                    <label for="datum">Beküldés Dátuma:</label>
+                    <input type="date" id="datum" name="datum" required>
+                    <span class="hiba-uzenet" id="datum-hiba"></span> 
+                </div>
+
+                <div class="urlap-csoport">
+                    <label for="kedvenc-szam">Kedvenc mezszám (1-99):</label>
+                    <input type="number" id="kedvenc-szam" name="kedvenc-szam" min="1" max="99">
+                    <span class="hiba-uzenet" id="szam-hiba"></span> 
+                </div>
+
+                <div class="urlap-csoport">
+                    <label for="tema">Üzenet Témája:</label>
+                    <select id="tema" name="tema" required>
+                        <option value="">-- Kérjük, válasszon --</option>
+                        <option value="hiba">Hibajelentés az oldallal kapcsolatban</option>
+                        <option value="keret">Kérdés a keretről</option>
+                        <option value="egyeb">Egyéb</option>
+                    </select>
+                    <span class="hiba-uzenet" id="tema-hiba"></span> 
+                </div>
+                
+                <div class="urlap-csoport radio-csoport">
+                    <label class="csoport-cim">Rajongó típusa:</label>
+                    
+                    <input type="radio" id="hivatalos-tag" name="rajongo-tipus" value="tag" required>
+                    <label for="hivatalos-tag">Hivatalos klubtag</label>
+                    
+                    <input type="radio" id="egyszeru-rajongo" name="rajongo-tipus" value="rajongo">
+                    <label for="egyszeru-rajongo">Egyszerű rajongó</label>
+                    <span class="hiba-uzenet" id="radio-hiba"></span> 
+                </div>
+
+                <div class="urlap-csoport">
+                    <label for="uzenet">Az Ön Üzenete/Véleménye (min. 20 karakter):</label>
+                    <textarea id="uzenet" name="uzenet" rows="5" minlength="20" required></textarea>
+                    <span class="hiba-uzenet" id="uzenet-hiba"></span> 
+                </div>
+
+                <div class="urlap-csoport">
+                    <label for="hirlevel">Feliratkozom a heti hírlevélre</label>
+                    <input type="checkbox" id="hirlevel" name="hirlevel" value="igen">
+                </div>
+                
+                <div class="urlap-csoport">
+                    <button type="submit" class="elkuld-gomb">Üzenet Elküldése</button>
+                </div>
+            </form>
+            
+        </section>
+    </main>
+
+    <footer class="fo-lablec">
+        <div class="lablec-info">
+            <p>&copy; 2025 FC Barcelona Rajongói Oldal | Készítette: Békefi Ottó</p>
+            <p>Ez egy iskolai projekt.</p>
+        </div>
+        <div class="kozossegi-linkek">
+            <a href="#">Facebook</a> | 
+            <a href="#">Instagram</a> | 
+            <a href="#">Twitter</a>
+        </div>
+    </footer>
+    
+    <script src="js/foprogram.js"></script> 
+    <script src="js/urlap_validacio.js"></script> 
+</body>
+</html>

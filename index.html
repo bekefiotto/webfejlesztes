@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A FC Barcelona hivatalos és nem hivatalos hírei, története és aktuális kerete.">
+    <meta name="author" content="Békefi Ottó">
+
+    <link rel="icon" type="image/x-icon" href="kepek/barcelona.png"> 
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/stilus.css">
+    <title>FC Barcelona – Més Que Un Club</title>
+</head>
+<body>
+    
+    <header class="fo-fejlec">
+        <div class="embléma">
+            <h1>FC Barcelona</h1>
+            <p>"Més Que Un Club"</p>
+        </div>
+        
+        <nav class="fo-navigacio">
+            <ul>
+                <li><a href="index.html" class="aktiv">Kezdőlap</a></li>
+                <li><a href="tortenet.html">Történelem</a></li>
+                <li><a href="keret.html">Legjobb játékosaink</a></li>
+                <li><a href="kapcsolat.html">Kapcsolat</a></li> 
+            </ul>
+        </nav>
+        
+        <button class="menu-kapcsolo">Menü</button> 
+    </header>
+
+    <hr>
+    
+    <main class="tartalom-burkolo">
+        <section id="hős-szekcio" class="hős-szekcio">
+            <h2>Üdvözlünk a Barca Rajongói Oldalán!</h2>
+            <p>Fedezd fel a klub gazdag történelmét és legfrissebb híreit.</p>
+            <a href="keret.html" class="felhivas-gomb">Ismerd meg a Játékosokat</a>
+        </section>
+
+        <section id="legfrissebb-hirek" class="hir-szekcio">
+            <h2 class="szekcio-cim">Friss Hírek</h2>
+            <div class="hir-racs"> <article class="hir-elem">
+                    <h3>Győztes meccs a hétvégén!</h3>
+                    <p>Rövid összefoglaló a csapat utolsó mérkőzéséről és a kulcsjátékosok teljesítményéről.</p>
+                    <a href="https://www.fcbarcelona.com/en/football/first-team/news/4407322/fc-barcelona-4-0-athletic-club-triumphant-return" class="tovabb-olvasom">Tovább olvasom</a>
+                </article>
+
+                <article class="hir-elem">
+                    <h3>Új szerződés aláírása</h3>
+                    <p>Egy tehetséges fiatal játékos hosszabbított, a klub jövője biztosítva van.</p>
+                    <a href="https://www.nemzetisport.hu/spanyol-labdarugas/2025/05/szerzodest-hosszabbitott-lamine-yamallal-a-barcelona-hivatalos" class="tovabb-olvasom">Tovább olvasom</a>
+                </article>
+            </div>
+        </section>
+        
+        <section id="interaktiv-funkcio" class="funkcio-szekcio">
+            <h2 class="szekcio-cim">Pontszám Kalkulátor</h2>
+            <p class="interaktiv-funckio-bevezeto">Hány pontot szerezne a csapat 38 meccs alatt a La-Ligában? Add meg a győzelmek, döntetlenek és vereségek számát!</p>
+            
+            <div id="kalkulator-terulet" class="kalkulator-terulet">
+                
+                <div class="input-csoport">
+                    <label for="gyozelem">Győzelmek (3 pont/db):</label>
+                    <input type="number" id="gyozelem" value="0" min="0" max="38">
+                </div>
+                
+                <div class="input-csoport">
+                    <label for="dontetlen">Döntetlenek (1 pont/db):</label>
+                    <input type="number" id="dontetlen" value="0" min="0" max="38">
+                </div>
+                
+                <div class="input-csoport">
+                    <label for="vereseg">Vereségek (0 pont/db):</label>
+                    <input type="number" id="vereseg" value="0" min="0" max="38">
+                </div>
+
+                <div class="eredmeny-div">
+                    <p class="osszes-meccs">Összes meccs: <span id="osszes-meccs-szam">0</span> / 38</p>
+                    <button id="szamol-gomb" class="felhivas-gomb">Pontszám Kiszámítása</button>
+                </div>
+                
+                <h3 class="vegeredmeny">Összpontszám: <span id="pont-eredmeny">0</span> pont</h3>
+
+            </div>
+        </section>
+    </main>
+    
+    <hr>
+    
+    <footer class="fo-lablec">
+        <div class="lablec-info">
+            <p>&copy; 2025 FC Barcelona Rajongói Oldal | Készítette: Békefi Ottó</p>
+            <p>Minden jog fenntartva. Ez egy iskolai projekt.</p>
+        </div>
+        <div class="kozossegi-linkek">
+            <a href="#">Facebook</a> | 
+            <a href="#">Instagram</a> | 
+            <a href="#">Twitter</a>
+        </div>
+    </footer>
+    
+    <script src="js/foprogram.js"></script>
+    <script src="js/interaktiv_funckio.js"></script>
+  </body>
+</html>

@@ -1,0 +1,504 @@
+/* ======================================= */
+/* 1. GLOBÁLIS BEÁLLÍTÁSOK ÉS RESET */
+/* ======================================= */
+
+:root { /* színpaletta meghatározása, globálisan elérhető változók, amiket később fel tudok használni /*
+    /* Színek (Barca színek inspirációja) */
+    --kék: #004d98;
+    --piros: #a50044;
+    --sárga: #fdbb30;
+    --fehér: #ffffff;
+    --hatter-szurke: #f4f4f4;
+    --szoveg-sotet: #333333;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'cyrillic'; /* A Google Font használata (1 pont) */
+    color: var(--szoveg-sotet);
+    background-color: var(--hatter-szurke);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: var(--kék);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ======================================= */
+/* 2. FEJLÉC ÉS NAVIGÁCIÓ */
+/* ======================================= */
+
+.fo-fejlec {
+    background-color: var(--kék);
+    color: var(--fehér);
+    padding: 1rem 5%;
+    display: flex; /* Flexbox a logó és a menü elrendezéséhez */
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Reszponzivitás miatt, mobil nézetben, ha nem elegendő a rendelkezésre álló jely, akkor új sorba rakja az elemet (törés engedélyezése) */
+}
+
+.embléma h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.2rem;
+}
+
+.embléma p {
+    font-size: 0.8rem;
+    opacity: 0.8; /* áttetszőség (0-1) */
+}
+
+/* Navigáció alap beállítás (Mobilnézet) */
+.fo-navigacio ul {
+    list-style: none;
+    display: none; /* Alapértelmezetten rejtve, a JavaScript fogja megmutatni */
+    flex-direction: column; /* Mobilnézetben egymás alatt */
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.fo-navigacio ul.nyitott {
+    display: flex; /* JavaScript által hozzáadott osztály */
+}
+
+.fo-navigacio a {
+    display: block;
+    padding: 0.75rem 0;
+    color: var(--fehér);
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.5s; /*a gomb színe, ha remgyünk 0,5s alatt változik pirossá majd, nem pedig azonnal */
+}
+
+.fo-navigacio a:hover,
+.fo-navigacio a.aktiv {
+    background-color: var(--piros);
+    text-decoration: none;
+}
+
+.menu-kapcsolo {
+    background: var(--piros);
+    color: var(--fehér);
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer; /* Amikor a felhasználó az elem fölé viszi a kurzort, akkor egy mutatóujjra változik a kurzor */
+    display: block; /* Mobilnézetben látszik */
+}
+
+/* ======================================= */
+/* 3. FŐ TARTALOM ÉS SZAKASZOK */
+/* ======================================= */
+
+.tartalom-burkolo {
+    padding: 2rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.oldal-cim, .szekcio-cim {
+    color: var(--piros);
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* Hős szekció (kiemelt rész) */
+.hős-szekcio {
+    background-color: var(--fehér);
+    padding: 3rem;
+    text-align: center;
+    border-radius: 8px; /* Elem sarkainak lekerekítése */
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* árnyékot ad az elemnek, 0:Vízszintes elmozdulás, 4px:Függőleges elmozdulás, 6px:Szórási sugár*/
+}
+
+.felhivas-gomb {
+    display: inline-block;
+    background-color: var(--sárga);
+    color: var(--szoveg-sotet);
+    padding: 0.75rem 2rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.5s; /*a gomb színe, ha remgyünk 0,5s alatt változik pirossá majd, nem pedig azonnal */
+}
+
+.felhivas-gomb:hover {
+    background-color: #e6a72e;
+    text-decoration: none;
+}
+
+/* Hírek rács (fooldal.html) */
+.hir-racs {
+    display: flex; /* Flexbox az oszlopok mobil nézetben */
+    flex-direction: column; /* oszlopos elrendezés, nem pedig az alapérték a sorbarendezés van beállítva */
+    gap: 1.5rem; /* flex elemek közti tér szabályozása */
+}
+
+.hir-elem {
+    background-color: var(--fehér);
+    padding: 1.5rem;
+    border-left: 5px solid var(--piros);
+    border-radius: 4px;
+}
+
+.oldalsav-cim{
+    margin-top: 0.8rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ======================================= */
+/* 4. JÁTÉKOSKERET STÍLUS (keret.html) */
+/* ======================================= */
+
+.jatekos-racs {
+    display: grid;
+    /* Mobil nézetben 1 oszlop, azaz minden játékos egy nagy oszlopban, egymás alatt jelenik meg*/
+    grid-template-columns: 1fr; /* Grid konténernek egyetlen oszlopa lesz és az kitölti a rendelkezésre álló hely 100%-át*/
+    gap: 2rem;
+}
+
+.poszt-csoport {
+    background-color: var(--fehér);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.poszt-cim {
+    color: var(--kék);
+    border-bottom: 2px solid var(--sárga);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.jatekos-lista {
+    display: flex; /* Flexbox a játékoskártyák sorba rendezéséhez */
+    flex-wrap: wrap; /* Reszponzivitás miatt, mobil nézetben, ha nem elegendő a rendelkezésre álló jely, akkor új sorba rakja az elemet (törés engedélyezése) */
+    gap: 1rem;
+}
+
+.jatekos-kartya {
+    flex: 1 1 200px; /* Alapértelmezett kártyaszélesség mobilra */
+    padding: 1rem;
+    border: 1px solid var(--hatter-szurke);
+    border-radius: 4px;
+    text-align: center;
+    background-color: var(--hatter-szurke);
+}
+
+.jatekos-kep-kontener {
+    /* 1. FIX MÉRET: Minden konténer pontosan 150px x 150px lesz. */
+    width: 400px; 
+    height: auto;
+    margin: 0.5rem auto 1rem auto; /* Középre igazítás és térköz */
+}
+
+.jatekos-kep {
+    /* 2. KITÖLTÉS: A kép kitölti a konténer 100%-át. */
+    width: 100%;    
+    height: 100%;   
+    
+    /* 3. ARÁNY ÉS ILLESZTÉS: Lényegi rész! */
+    /* A kép arányosan növekszik/zsugorodik, hogy lefedje a konténert.
+       A kép arányai megmaradnak, de a kilógó részek (pl. túl magas vagy túl széles kép széle) levágásra kerülnek. */
+    object-fit: cover; 
+    display: block;
+}
+
+.mezszam {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--piros);
+    display: block;
+}
+
+.poszt {
+    font-size: 0.9rem;
+    color: var(--szoveg-sotet);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+
+/* ======================================= */
+/* 5. ŰRLAP STÍLUS (kapcsolat.html) */
+/* ======================================= */
+
+.kapcsolat-bevezeto_szoveg{
+    margin-bottom: 1rem;
+    margin-top: 0.2rem;
+}
+
+.urlap-szekcio {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--fehér);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* árnyékot ad az elemnek, 0:Vízszintes elmozdulás, 4px:Függőleges elmozdulás, 6px:Szórási sugár*/
+}
+
+.urlap-csoport {
+    margin-bottom: 1.5rem;
+}
+
+.urlap-csoport label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.urlap-csoport input[type="text"],
+.urlap-csoport input[type="email"],
+.urlap-csoport input[type="password"],
+.urlap-csoport input[type="date"],
+.urlap-csoport input[type="number"],
+.urlap-csoport select,
+.urlap-csoport textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* RÁDIÓ ÉS CHECKBOX GOMBOK SORBA RENDEZÉSE */
+.radio-csoport input[type="radio"],
+.checkbox-csoport input[type="checkbox"] {
+    display: inline-block; 
+    width: auto; 
+    margin-right: 0.25rem; 
+}
+
+/* A rádió és checkbox labeljei */
+.radio-csoport label,
+.checkbox-csoport label {
+    display: inline-block; 
+    font-weight: normal; 
+    margin-right: 1.5rem; 
+}
+
+/* A címsor ("Rajongó típusa:") maradjon külön sorban, vastag betűvel */
+.radio-csoport .csoport-cim {
+    display: block; 
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.elkuld-gomb {
+    background-color: var(--kék);
+    color: var(--fehér);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer; /* Amikor a felhasználó az elem fölé viszi a kurzort, akkor egy mutatóujjra változik a kurzor */
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.5s; /*a gomb színe, ha remgyünk 0,5s alatt változik pirossá majd, nem pedig azonnal */
+    width: 100%;
+}
+
+.elkuld-gomb:hover {
+    background-color: var(--piros);
+}
+
+/* Űrlap validációs hibaüzenet */
+.hiba-uzenet {
+    color: var(--piros);
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+.hibas-input {
+    border: 2px solid var(--piros) !important;
+    background-color: #ffe8e8;
+}
+
+/* ======================================= */
+/* 6. LÁBLÉC */
+/* ======================================= */
+
+.fo-lablec {
+    background-color: var(--szoveg-sotet);
+    color: var(--fehér);
+    padding: 1.5rem 5%;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.lablec-info {
+    margin-bottom: 0.75rem;
+}
+
+.kozossegi-linkek a {
+    color: var(--sárga);
+    margin: 0 0.5rem; /* 0:felső, alsó margó, 0.5rem: jobb, bal margó*/
+}
+
+.kozossegi-linkek a:hover {
+    text-decoration: underline;
+}
+
+/* ======================================= */
+/* PONTSZÁM KALKULÁTOR STÍLUS (8 pont) */
+/* ======================================= */
+
+.interaktiv-funckio-bevezeto{
+    font-weight: bold;
+}
+
+.kalkulator-terulet {
+    max-width: 400px;
+    margin: 1.5rem auto;
+    padding: 2rem;
+    background-color: var(--fehér);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.kalkulator-terulet .input-csoport {
+    margin-bottom: 1rem;
+}
+
+.kalkulator-terulet label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.kalkulator-terulet input[type="number"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.eredmeny-div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--hatter-szurke);
+}
+
+.osszes-meccs {
+    font-weight: bold;
+    color: var(--kék);
+    font-size: 1.1rem;
+}
+
+.vegeredmeny {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    color: var(--piros);
+}
+
+.vegeredmeny span {
+    font-size: 2rem;
+    font-weight: bold;
+    display: block;
+}
+
+/* Kisebb, zöld gomb az inputok felett */
+#szamol-gomb {
+    background-color: var(--kék); /* Barcelona Kék */
+    color: var(--fehér);
+    width: 100%;
+    max-width: 300px;
+    transition: background-color 0.3s;
+}
+
+#szamol-gomb:hover {
+    background-color: var(--piros);
+}
+
+/* ======================================= */
+/* 7. RESZPONZIVITÁS (MEDIA QUERY-K) (5 pont) */
+/* ======================================= */
+
+/* TABLET és KÖZEPES KÉPERNYŐ (pl. 768px felett) */
+@media (min-width: 768px) {
+    
+    /* NAVIGÁCIÓ */
+    .fo-fejlec {
+        flex-wrap: nowrap;
+    }
+    
+    .menu-kapcsolo {
+        display: none; /* Tablet és desktop nézetben elrejtjük */
+    }
+
+    .fo-navigacio ul {
+        display: flex; /* Navigációs lista vízszintesen */
+        flex-direction: row;
+        width: auto;
+        margin-top: 0;
+    }
+
+    .fo-navigacio li {
+        margin-left: 1.5rem;
+    }
+    
+    .fo-navigacio a {
+        padding: 0.5rem 0.5rem;
+        border-bottom: none;
+    }
+    
+    /* HÍREK RÁCS */
+    .hir-racs {
+        flex-direction: row; /* Hírek egymás mellett */
+        flex-wrap: wrap;
+    }
+    
+    .hir-elem {
+        flex: 1 1 calc(50% - 1rem); /* Két oszlopos elrendezés, 1:flex-grow, 1:flex-shrink, calc(50% - 1rem): alapértelmezett szélesség kiszámítása (grow és shrink előtti állapot) */
+    }
+
+    /* JÁTÉKOS KERET */
+    .jatekos-lista {
+        gap: 1.5rem;
+        justify-content: center;
+    }
+
+    .jatekos-kartya {
+        flex: 1 1 200px; /* Nagyobb kártyák, alapértelmezett állapot: 200px */
+    }
+}
+
+
+/* ASZTALI KÉPERNYŐ (pl. 1024px felett) */
+@media (min-width: 1024px) {
+    
+    /* HÍREK RÁCS */
+    .hir-racs {
+        /* Három oszlop is lehetne nagyobb tartalom esetén, de marad a 2, ha nem bővül */
+        flex-wrap: nowrap;
+    }
+    
+    /* JÁTÉKOS KERET */
+    .jatekos-racs {
+        /* Játékoscsoportok elrendezése is lehetne grid-ben */
+        grid-template-columns: repeat(2, 1fr); /* két oszlopos elrendezés, egyenlő nagyságúak lesznek (1fr), repeat függvény ismétli ezt a mintát ameddig kell */
+    }
+    
+    .jatekos-lista {
+        justify-content: flex-start;
+    }
+}
